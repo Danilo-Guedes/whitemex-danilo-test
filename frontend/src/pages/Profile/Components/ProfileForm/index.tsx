@@ -58,7 +58,7 @@ function ProfileForm({ user }: ProfileFormProps) {
       <div className="flex flex-col items-start justify-center w-full gap-1">
         <label
           htmlFor="event-name"
-          className="text-lg text-secondary font-bold text-center mb-5"
+          className="text-lg text-primary font-bold text-center mb-5"
         >
           Nome
         </label>
@@ -78,7 +78,7 @@ function ProfileForm({ user }: ProfileFormProps) {
       <div className="flex flex-col items-start justify-center w-full gap-1">
         <label
           htmlFor="event-description"
-          className="text-lg text-secondary font-bold text-center mb-5"
+          className="text-lg text-primary font-bold text-center mb-5"
         >
           E-mail
         </label>

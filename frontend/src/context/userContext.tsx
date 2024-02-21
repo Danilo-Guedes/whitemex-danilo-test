@@ -20,7 +20,7 @@ const UserProvider = ({ children }: { children: React.ReactNode }) => {
 
   useEffect(() => {
     const retrievedUser = JSON.parse(
-      localStorage.getItem("user-data") || ""
+      localStorage.getItem("user-data") || "{}"
     ) as User;
 
     if (retrievedUser) {

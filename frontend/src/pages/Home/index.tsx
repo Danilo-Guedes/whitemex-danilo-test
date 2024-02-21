@@ -1,17 +1,21 @@
-import { Typewriter } from "react-simple-typewriter";
 import LoginForm from "../../components/shared/LoginForm";
 import { useEffect } from "react";
 import { checkAuth } from "../../utils/auth";
 import { useNavigate } from "react-router";
 import { ROUTES } from "../../utils/routes";
+import CustomTypewriter from "@/components/shared/CustomTypewriter"
 
 function Home() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const hasUserData = checkAuth();
-    if (hasUserData) {
-      navigate(ROUTES.dashboard);
+    try {
+      const hasUserData = checkAuth();
+      if (hasUserData) {
+        navigate(ROUTES.dashboard);
+      }
+    } catch (error) {
+      console.log(error);
     }
   }, [navigate]);
 
@@ -20,32 +24,16 @@ function Home() {
       <section className="flex flex-col items-center container">
         <h1 className="text-3xl mt-10">Olá Devs !!</h1>
         <h1 className="text-3xl mt-10 text-center">
-          <Typewriter
-            words={[
-              "Sejam bem vindo ao meu teste para a vaga de fullstack da TokenLab!",
-              "Espero que gostem da aplicação!",
-              "Obrigado pela oportunidade!",
-              "Stack do front: Vite, React, Tailwind, React-Query",
-              "Stack do back: Node, Express, MongoDB",
-            ]}
-            cursor
-            cursorBlinking
-            cursorColor="rgb(96 165 250 / 1)"
-            cursorStyle="_"
-            typeSpeed={80}
-            deleteSpeed={50}
-            delaySpeed={1500}
-            loop={true}
-          />
+          <CustomTypewriter />
         </h1>
         <div className="flex flex-col items-center  lg:flex-row mt-10 w-full border rounded-lg overflow-hidden">
           <div className="w-full md:w-1/2 flex flex-col items-center justify-center">
             <img
-              src="/logos/logo-tokenlab.jpeg"
+              src="/logos/logo-whitemex.jpg"
               className="w-full self-center md:w-96"
             />
             <img
-              src="/images/foto-danilo.jpg"
+              src="/images/foto-danilo-green.jpg"
               className="w-full xl:w-1/2  2xl:w-8/12"
             />
           </div>

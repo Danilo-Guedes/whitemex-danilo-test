@@ -5,7 +5,6 @@ import Home from "./pages/Home";
 import SignUp from "./pages/SignUp";
 import { ROUTES } from "./utils/routes";
 import { Toaster } from "./components/ui/toaster";
-import { checkAuth } from "./utils/auth";
 import { GlobalProvider } from "./context/index";
 import Profile from "./pages/Profile";
 
@@ -22,7 +21,6 @@ function App() {
     {
       path: ROUTES.me,
       element: <Profile />,
-      loader: () => checkAuth(),
     },
   ]);
 

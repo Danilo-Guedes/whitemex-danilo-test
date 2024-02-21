@@ -8,7 +8,7 @@ function NavBar() {
     <nav className="flex flex-row items-center justify-between p-2 md:p-10 bg-white border-b-2 border-border shadow-lg">
       <div className="flex-shrink-0">
         <Link to={ROUTES.dashboard}>
-          <img src="/logos/logo-tokenlab.jpeg" className="w-16 h-16" alt="logo" />
+          <img src="/logos/logo-whitemex.jpg" className="w-16 h-16" alt="logo" />
         </Link>
       </div>
       <div className="flex items-center justify-center px-5">

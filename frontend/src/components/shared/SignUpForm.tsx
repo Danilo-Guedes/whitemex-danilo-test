@@ -11,6 +11,7 @@ import { cn } from "../../utils/style";
 import Spinner from "./Spinner";
 import { useToast } from "../../hooks/use-toast";
 import { Button } from "../ui/button";
+import { Input, InputProps } from "../ui/input";
 
 const validationSchema = Yup.object({
   name: Yup.string().required("Nome é obrigatório"),
@@ -21,6 +22,10 @@ const validationSchema = Yup.object({
     .required("Confirmação de senha é obrigatória"),
 });
 
+type FormikFieldProps = {
+  field: Pick<InputProps, "name" | "value" | "onChange" | "onBlur">;
+};
+
 function SignUpForm() {
   const navigate = useNavigate();
 
@@ -28,7 +33,6 @@ function SignUpForm() {
   const { mutate, isPending } = useMutation({
     mutationFn: createUserApi,
     onSuccess: () => {
-
       toast({
         title: "Sucesso!",
         description: `Usuário criado com sucesso! Um e-mail de validação foi enviado para o e-mail informado`,
@@ -38,9 +42,13 @@ function SignUpForm() {
     onError: (error) => {
       console.log("Error creating user", error);
 
-      if ((error as AxiosError<{
-        message: string;
-      }>)?.response?.data?.message?.includes("already has a user associated")) {
+      if (
+        (
+          error as AxiosError<{
+            message: string;
+          }>
+        )?.response?.data?.message?.includes("already has a user associated")
+      ) {
         toast({
           title: "Opss...",
           description:
@@ -59,8 +67,8 @@ function SignUpForm() {
   });
 
   return (
-    <div className="flex flex-col border rounded-2xl w-full lg:w-10/12 xl:w-12/12  h-full items-center p-6 lg:p-10">
-      <span className="text-2xl text-primary font-bold text-center">
+    <div className="flex flex-col border border-border rounded-2xl w-full lg:w-10/12 xl:w-12/12  h-full items-center p-6 lg:p-10">
+      <span className="text-2xl text-secondary font-bold text-center">
         Preencha para fazer o seu Cadastro
       </span>
       <Formik // usando os components react do Formik para mostrar outra abordagem de formulário sem utilizar o hook
@@ -80,16 +88,23 @@ function SignUpForm() {
                 Nome
               </label>
               <Field
-                className="border rounded-lg p-2 mt-2"
-                type="text"
-                placeholder="Digite..."
                 id="nameinput"
                 name="name"
+                render={({ field }: FormikFieldProps) => {
+                  return (
+                    <Input
+                      {...field}
+                      className="border rounded-lg p-2 mt-2"
+                      type="text"
+                      placeholder="Digite..."
+                    />
+                  );
+                }}
               />
               <ErrorMessage
                 name="name"
                 component="div"
-                className="text-red-500"
+                className="text-destructive"
               />
             </div>
             <div className="flex flex-col">
@@ -97,16 +112,23 @@ function SignUpForm() {
                 Email
               </label>
               <Field
-                className="border rounded-lg p-2 mt-2"
-                type="email"
-                placeholder="Digite..."
                 id="emailinput"
                 name="email"
+                render={({ field }: FormikFieldProps) => {
+                  return (
+                    <Input
+                      {...field}
+                      className="border rounded-lg p-2 mt-2"
+                      type="email"
+                      placeholder="Digite..."
+                    />
+                  );
+                }}
               />
               <ErrorMessage
                 name="email"
                 component="div"
-                className="text-red-500"
+                className="text-destructive"
               />
             </div>
             <div className="flex flex-col">
@@ -114,16 +136,23 @@ function SignUpForm() {
                 Senha
               </label>
               <Field
-                className="border rounded-lg p-2 mt-2"
-                type="password"
-                placeholder="Digite..."
                 id="passwordinput"
                 name="password"
+                render={({ field }: FormikFieldProps) => {
+                  return (
+                    <Input
+                      {...field}
+                      className="border rounded-lg p-2 mt-2"
+                      type="password"
+                      placeholder="Digite..."
+                    />
+                  );
+                }}
               />
               <ErrorMessage
                 name="password"
                 component="div"
-                className="text-red-500"
+                className="text-destructive"
               />
             </div>
             <div className="flex flex-col">
@@ -134,16 +163,23 @@ function SignUpForm() {
                 Confirme a Senha
               </label>
               <Field
-                className="border rounded-lg p-2 mt-2"
-                type="password"
-                placeholder="Digite..."
                 id="confirmpasswordinput"
                 name="confirmPassword"
+                render={({ field }: FormikFieldProps) => {
+                  return (
+                    <Input
+                      {...field}
+                      className="border rounded-lg p-2 mt-2"
+                      type="password"
+                      placeholder="Digite..."
+                    />
+                  );
+                }}
               />
               <ErrorMessage
                 name="confirmPassword"
                 component="div"
-                className="text-red-500"
+                className="text-destructive"
               />
             </div>
             <Button
