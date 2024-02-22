@@ -39,8 +39,8 @@ function LoginForm() {
     mutationFn: userLogin,
     onSuccess: (data) => {
 
-      localStorage.setItem("user-token", data.token);
-      localStorage.setItem("user-data", JSON.stringify(data.user));
+      localStorage.setItem("whitemex-user-token", data.token);
+      localStorage.setItem("whitemex-user-data", JSON.stringify(data.user));
 
       setUserFn(data.user)
       const firstName = data.user.name.split(" ")[0];

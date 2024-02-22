@@ -1,4 +1,4 @@
-import express from "express";
+import express, { Request, Response } from "express";
 import { handlecreateUser, handleGetUsers, handleGetUserProfile } from "../controllers/user.js";
 import authMiddleware from "../middlewares/auth.js";
 
@@ -19,5 +19,9 @@ router.post("/create", (req, res) => {  // MUDAR PARA EXPRESS-VALIDATOR
 router.get("/me", authMiddleware, handleGetUserProfile);
 
 router.get("/", authMiddleware, handleGetUsers);
+
+router.get("/test", (req: Request, res: Response) => {
+  res.send("Hello World");
+})
 
 export default router;

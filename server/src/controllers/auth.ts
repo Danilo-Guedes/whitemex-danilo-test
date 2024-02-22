@@ -1,8 +1,9 @@
 import User from "../models/user.js";
 import bcrypt from "bcrypt";
 import { createUserApiJWT } from "../services/auth/jwt.js";
+import { Request, Response } from "express";
 
-async function handleUserLogin(req, res) {
+async function handleUserLogin(req : Request, res : Response) {
   const { email, password } = req.body;
 
   if (!password || !email) {
@@ -20,9 +21,8 @@ async function handleUserLogin(req, res) {
       return res.status(400).json({ error: true, message: "User not found" });
     }
 
-    // const isPasswordValid = await bcrypt.compare(password, row.hashed_password);
+    const isPasswordValid = await bcrypt.compare(password, row.password);
 
-    const isPasswordValid = password === row.password;
 
     if (!isPasswordValid) {
       return res

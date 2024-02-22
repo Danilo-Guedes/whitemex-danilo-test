@@ -4,7 +4,7 @@ export function checkAuth(): {
   userData: string | null;
   token: string | null;
 } {
-  const userToken = localStorage.getItem("user-token");
+  const userToken = localStorage.getItem("whitemex-user-token");
 
   if (!userToken) {
     throw new Error('User not authenticated');
@@ -16,12 +16,12 @@ export function checkAuth(): {
 
   if (exp && Date.now() >= exp * 1000) {
     console.log("Token expired");
-    localStorage.removeItem("user-token");
-    localStorage.removeItem("user-data");
+    localStorage.removeItem("whitemex-user-token");
+    localStorage.removeItem("whitemex-user-data");
     throw new Error('Token expired');
   }
 
-  const userData = localStorage.getItem("user-data");
+  const userData = localStorage.getItem("whitemex-user-data");
 
   const data = { userData, token: userToken };
 
@@ -29,6 +29,6 @@ export function checkAuth(): {
 }
 
 export function logout() {
-  localStorage.removeItem("user-token");
-  localStorage.removeItem("user-data");
+  localStorage.removeItem("whitemex-user-token");
+  localStorage.removeItem("whitemex-user-data");
 }

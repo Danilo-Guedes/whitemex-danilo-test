@@ -22,6 +22,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use("/api/users", userRouter);
 app.use("/api/auth", authRouter);
 
+
+console.log({MONGO_DB_URI : process.env.MONGO_DB_URI});
 mongoose
   .connect(process.env.MONGO_DB_URI as string)
   .then(() => {

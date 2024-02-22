@@ -1,6 +1,7 @@
-const User = require("../models/user");
+import { Request, Response } from "express";
+import User from "../models/user.js"
 
-async function handlecreateUser(req, res) {
+export async function handlecreateUser(req : Request, res : Response) {
   const { name, email, password, confirmPassword } = req.body;
 
   if (password !== confirmPassword) {
@@ -22,17 +23,16 @@ async function handlecreateUser(req, res) {
       name,
       email,
       password,
+      confirmPassword
     };
 
-    let user = await User.create(newUser);
-    user = user.toObject();
+    const user = await User.create(newUser);
+
 
     if (!user) {
-      res.status(400).json({ error: true, message: "User Not Created" });
+      return res.status(400).json({ error: true, message: "User Not Created" });
     }
 
-    delete user.password;
-    delete user.confirmPassword;
 
 
     res.status(201).json(user);
@@ -41,7 +41,7 @@ async function handlecreateUser(req, res) {
   }
 }
 
-async function handleGetUsers(req, res) {
+export async function handleGetUsers(req : Request, res : Response) {
   try {
     const { id } = req.body.user;
 
@@ -57,7 +57,7 @@ async function handleGetUsers(req, res) {
   }
 }
 
-async function handleGetUserProfile(req, res) {
+export async function handleGetUserProfile(req : Request, res : Response) {
   const user = await User.findById(req.body.user.id);
 
 
@@ -68,4 +68,3 @@ async function handleGetUserProfile(req, res) {
   return res.status(200).json(user);
 }
 
-module.exports = { handlecreateUser, handleGetUsers, handleGetUserProfile };
