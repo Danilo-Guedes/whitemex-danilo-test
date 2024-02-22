@@ -47,12 +47,12 @@ function ProfileForm({ user }: ProfileFormProps) {
 
   return (
     <form
-      className="mt-12 flex flex-col items-center justify-center w-full gap-5 lg:px-52"
+      className="flex flex-col items-center justify-center w-full gap-5 lg:px-52"
       onSubmit={formik.handleSubmit}
     >
       <div className="my-10">
-        <div className="overflow-hidden rounded-full w-52 h-52">
-          <img src="/images/brad-pitt.webp" />
+        <div className="overflow-hidden rounded-full ">
+          <img src="/images/madruga.jpeg" className="object-cover w-56 h-56" />
         </div>
       </div>
       <div className="flex flex-col items-start justify-center w-full gap-1">

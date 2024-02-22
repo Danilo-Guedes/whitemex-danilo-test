@@ -6,7 +6,7 @@ const PageTemplate = ({ children }: {children: ReactNode}) => {
     return (
         <div className="min-h-screen flex flex-1 flex-grow flex-col relative">
             <NavBar />
-            <div className="flex flex-grow flex-col flex-1 px-5 md:px-36">{children}</div>
+            <div className="flex flex-grow flex-col flex-1 px-5 md:px-36 shadow-lg shadow-primary">{children}</div>
             <Footer />
         </div>
     );

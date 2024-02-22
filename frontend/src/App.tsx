@@ -3,6 +3,7 @@ import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
 
 import Home from "./pages/Home";
 import SignUp from "./pages/SignUp";
+import DashBoard from "./pages/Dashboard";
 import { ROUTES } from "./utils/routes";
 import { Toaster } from "./components/ui/toaster";
 import { GlobalProvider } from "./context/index";
@@ -17,6 +18,10 @@ function App() {
     {
       path: ROUTES.signup,
       element: <SignUp />,
+    },
+    {
+      path: ROUTES.dashboard,
+      element: <DashBoard />,
     },
     {
       path: ROUTES.me,

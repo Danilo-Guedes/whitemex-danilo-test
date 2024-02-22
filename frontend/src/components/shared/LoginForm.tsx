@@ -1,8 +1,6 @@
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import { Link, 
-  // useNavigate 
-} from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useMutation } from "@tanstack/react-query";
 
 import { ROUTES } from "../../utils/routes";
@@ -29,28 +27,25 @@ function LoginForm() {
     },
   });
 
-
-  const {setUserFn} = useUserData()
-  // const navigate = useNavigate();
+  const { setUserFn } = useUserData();
+  const navigate = useNavigate();
 
   const { toast } = useToast();
 
   const { mutate, isPending } = useMutation({
     mutationFn: userLogin,
     onSuccess: (data) => {
-
       localStorage.setItem("whitemex-user-token", data.token);
       localStorage.setItem("whitemex-user-data", JSON.stringify(data.user));
 
-      setUserFn(data.user)
+      setUserFn(data.user);
       const firstName = data.user.name.split(" ")[0];
       toast({
         title: "Usuário Logado",
         description: `Bem vindo ao teste da TokenLab, ${firstName}`,
       });
 
-      // navigate(ROUTES.dashboard);
-      alert("aqui deve redirecionar para a pagina principal, talvez um dashboard")
+      navigate(ROUTES.dashboard);
     },
     onError: (error) => {
       // On error, you can do anything with the error object
