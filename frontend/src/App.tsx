@@ -8,6 +8,8 @@ import { ROUTES } from "./utils/routes";
 import { Toaster } from "./components/ui/toaster";
 import { GlobalProvider } from "./context/index";
 import Profile from "./pages/Profile";
+import NewTransaction from "./pages/NewTransation";
+import MyTransactions from "./pages/MyTransactions";
 
 function App() {
   const router = createBrowserRouter([
@@ -22,6 +24,14 @@ function App() {
     {
       path: ROUTES.dashboard,
       element: <DashBoard />,
+    },
+    {
+      path: ROUTES.newTransactions,
+      element: <NewTransaction />,
+    },
+    {
+      path: ROUTES.myTransactions,
+      element: <MyTransactions />,
     },
     {
       path: ROUTES.me,

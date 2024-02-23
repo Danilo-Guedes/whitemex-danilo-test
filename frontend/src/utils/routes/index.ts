@@ -3,5 +3,7 @@ export const ROUTES = {
     signup: "/cadastro",
     dashboard: "/dashboard",
     me: "/profile",
+    newTransactions: "/nova-tranasação",
+    myTransactions: "/minhas-transações",
   } as const;
   

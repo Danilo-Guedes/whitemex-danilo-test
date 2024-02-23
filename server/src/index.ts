@@ -7,11 +7,9 @@ import mongoose from "mongoose";
 import userRouter from "./routes/user.js";
 import authRouter from "./routes/auth.js";
 
-const PORT = process.env.PORT || 3000; 
-
+const PORT = process.env.PORT || 3000;
 
 const app = express();
-
 
 //MIDDLEWARES
 app.use(cors());
@@ -22,8 +20,6 @@ app.use(express.urlencoded({ extended: true }));
 app.use("/api/users", userRouter);
 app.use("/api/auth", authRouter);
 
-
-console.log({MONGO_DB_URI : process.env.MONGO_DB_URI});
 mongoose
   .connect(process.env.MONGO_DB_URI as string)
   .then(() => {
@@ -33,7 +29,6 @@ mongoose
     });
   })
   .catch((error) => {
-    console.error('Error connecting to database:', error);
+    console.error("Error connecting to database:", error);
     process.exit(1);
   });
-
