@@ -17,13 +17,20 @@ interface CardProps {
 
 function DashBoardCard({ icon, title, subtitle, href }: CardProps) {
   return (
-    <Link to={href}>
-      <Card>
+    <Link to={href} className="hover:scale-[102%] transition-transform duration-200">
+      <Card className="min-w-80">
         <CardHeader>
           <CardTitle className="text-2xl text-secondary text-center">{title}</CardTitle>
         </CardHeader>
         <CardContent className="card-content">{icon}</CardContent>
-        <CardFooter className="text-muted-foreground">{subtitle}</CardFooter>
+        <CardFooter 
+        className="flex flex-col items-center"
+        >
+            <span className="text-muted-foreground">
+
+            {subtitle}
+            </span>
+            </CardFooter>
       </Card>
     </Link>
   );

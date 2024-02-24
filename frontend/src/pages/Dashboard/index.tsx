@@ -7,7 +7,7 @@ import { ROUTES } from "@/utils/routes";
 function DashBoard() {
   return (
     <PageTemplate>
-      <div className="flex flex-col p-10 md:flex-row items-center justify-center gap-10 md:gap-24 md:mt-20">
+      <div className="flex flex-col py-10 md:flex-row items-center justify-center gap-10 md:gap-24 md:mt-20">
         <DashBoardCard
           title="Nova Transação"
           subtitle="Cadastre uma nova transação"
@@ -15,7 +15,7 @@ function DashBoard() {
           href={ROUTES.newTransactions}
         />
         <DashBoardCard
-          title="Minhas Transação"
+          title="Minhas Transaçôes"
           subtitle="Gerencie suas transações aqui"
           icon={<img src={DataAnalysisSVG} />}
           href={ROUTES.myTransactions}
