@@ -1,5 +1,6 @@
 import { CreateTransactionForm, CreatedReturn } from "@/types/forms";
 import apiClient from ".";
+import { Transaction } from "@/types/transactions";
 
 export async function getTransactionsApi() {
   try {
@@ -11,7 +12,8 @@ export async function getTransactionsApi() {
   }
 }
 
-export async function getTransactionsByIdApi(id: string) {
+export async function getTransactionsByIdApi(id?: string) : Promise<Transaction> {
+  if(!id) throw new Error("Id is required")
   try {
     const resp = await apiClient.get(`/transactions/${id}`);
     return resp.data;

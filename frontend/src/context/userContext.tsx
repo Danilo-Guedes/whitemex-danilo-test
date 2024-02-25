@@ -7,7 +7,9 @@ const UserContext = createContext<{
   setUserFn: (user: User) => void;
 }>({
   user: undefined,
-  setUserFn: () => { throw new Error('setUserFn was called without a UserContext.Provider'); },
+  setUserFn: () => {
+    throw new Error("setUserFn was called without a UserContext.Provider");
+  },
 });
 
 // Create a UserProvider component to wrap your app and provide the user data
@@ -20,8 +22,8 @@ const UserProvider = ({ children }: { children: React.ReactNode }) => {
 
   useEffect(() => {
     const retrievedUser = JSON.parse(
-      localStorage.getItem("whitemex-user-data") || "{}"
-    ) as User;
+      localStorage.getItem("whitemex-user-data") || "{}" // TODO find a better approach than this empty object by default
+    )
 
     if (retrievedUser) {
       setUser(retrievedUser);

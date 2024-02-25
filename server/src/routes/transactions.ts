@@ -2,9 +2,11 @@ import express, { Request, Response } from "express";
 import { check } from "express-validator";
 import { validationMiddleware } from "../middlewares/validation.js";
 
-import { handleCreateTransaction,
-     handleGetTransactions 
-    } from "../controllers/transactions.js";
+import {
+  getTransactionsById,
+  handleCreateTransaction,
+  handleGetTransactions,
+} from "../controllers/transactions.js";
 import authMiddleware from "../middlewares/auth.js";
 
 const router = express.Router();
@@ -12,6 +14,7 @@ const router = express.Router();
 router.post(
   "/create",
   [
+    authMiddleware,
     check("name")
       .isString()
       .isLength({ min: 1 })
@@ -32,15 +35,16 @@ router.post(
     validationMiddleware,
   ],
   (req: Request, res: Response) => {
-    console.log(req.body);
     handleCreateTransaction(req, res);
   }
 );
 
+router.get("/", [authMiddleware], (req: Request, res: Response) => {
+  handleGetTransactions(req, res);
+});
 
-router.get("/", [
-    authMiddleware
-],(req: Request, res: Response) => {
-    handleGetTransactions(req, res);
-})
+router.get("/:id", [authMiddleware], (req: Request, res: Response) => {
+  getTransactionsById(req, res);
+});
+
 export default router;

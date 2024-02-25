@@ -31,8 +31,8 @@ function ProfileForm({ user }: ProfileFormProps) {
       email: user.email,
     },
     validationSchema,
-    onSubmit: (values) => {
-      console.log({ values });
+    onSubmit: () => {
+      // console.log({ values });
     },
   });
 

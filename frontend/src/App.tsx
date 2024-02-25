@@ -10,6 +10,8 @@ import { GlobalProvider } from "./context/index";
 import Profile from "./pages/Profile";
 import NewTransaction from "./pages/NewTransation";
 import MyTransactions from "./pages/MyTransactions";
+import TransactionDetails from "./pages/TransactionDetails";
+import PrivateRoute from "./utils/auth/ProtectedRoutes";
 
 function App() {
   const router = createBrowserRouter([
@@ -23,19 +25,43 @@ function App() {
     },
     {
       path: ROUTES.dashboard,
-      element: <DashBoard />,
+      element: (
+        <PrivateRoute>
+          <DashBoard />
+        </PrivateRoute>
+      ),
     },
     {
       path: ROUTES.newTransactions,
-      element: <NewTransaction />,
+      element: (
+        <PrivateRoute>
+          <NewTransaction />
+        </PrivateRoute>
+      ),
     },
     {
       path: ROUTES.myTransactions,
-      element: <MyTransactions />,
+      element: (
+        <PrivateRoute>
+          <MyTransactions />
+        </PrivateRoute>
+      ),
+    },
+    {
+      path: ROUTES.transactionsById(),
+      element: (
+        <PrivateRoute>
+          <TransactionDetails />,
+        </PrivateRoute>
+      ),
     },
     {
       path: ROUTES.me,
-      element: <Profile />,
+      element: (
+        <PrivateRoute>
+          <Profile />
+        </PrivateRoute>
+      ),
     },
   ]);
 

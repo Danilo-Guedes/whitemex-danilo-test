@@ -3,6 +3,7 @@ import PageTemplate from "@/components/shared/PageTemplate";
 import SadFaceSvg from "@/svg/sad-face.svg";
 import { useQuery } from "@tanstack/react-query";
 import TransactionsList from "./components/TransactionsList";
+import TransactionSkeleton from "./components/TransactionSkeleton";
 
 function MyTransactions() {
   // const data = [];
@@ -14,7 +15,7 @@ function MyTransactions() {
   return (
     <PageTemplate>
       {isLoading ? (
-        <div>Carregando...</div>
+        <TransactionSkeleton />
       ) : transactions?.length === 0 ? (
         <div className="flex flex-col items-center my-20">
           <img src={SadFaceSvg} className="w-full max-h-96" />
@@ -23,7 +24,7 @@ function MyTransactions() {
           </h2>
         </div>
       ) : (
-        <div>
+        <div className="mb-20">
           <TransactionsList transactions={transactions} />
         </div>
       )}
