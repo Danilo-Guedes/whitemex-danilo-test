@@ -22,7 +22,7 @@ export async function getUserProfileApi() {
 
 export async function getUsersApi() {
   try {
-    const resp = await apiClient.get("/users");
+    const resp = await apiClient.get("/user");
     return resp.data;
   } catch (error) {
     console.error(error);

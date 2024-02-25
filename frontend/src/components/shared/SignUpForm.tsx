@@ -3,7 +3,7 @@ import { useMutation } from "@tanstack/react-query";
 import { AxiosError } from "axios";
 
 import { ROUTES } from "../../utils/routes";
-import { createUserApi } from "../../api/user";
+import { createUserApi } from "../../api/users";
 
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";

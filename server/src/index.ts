@@ -6,6 +6,7 @@ import mongoose from "mongoose";
 
 import userRouter from "./routes/user.js";
 import authRouter from "./routes/auth.js";
+import transactionRouter from "./routes/transactions.js";
 
 const PORT = process.env.PORT || 3000;
 
@@ -19,6 +20,7 @@ app.use(express.urlencoded({ extended: true }));
 //ROUTES
 app.use("/api/users", userRouter);
 app.use("/api/auth", authRouter);
+app.use("/api/transactions", transactionRouter);
 
 mongoose
   .connect(process.env.MONGO_DB_URI as string)

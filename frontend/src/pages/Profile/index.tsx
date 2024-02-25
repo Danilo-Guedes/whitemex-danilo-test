@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import PageTemplate from "@/components/shared/PageTemplate";
-import { getUserProfileApi, } from "@/api/user";
+import { getUserProfileApi, } from "@/api/users";
 import ProfileForm from "./Components/ProfileForm";
 
 function Profile() {
