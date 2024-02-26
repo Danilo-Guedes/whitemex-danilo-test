@@ -7,6 +7,8 @@ import mongoose from "mongoose";
 import userRouter from "./routes/user.js";
 import authRouter from "./routes/auth.js";
 import transactionRouter from "./routes/transactions.js";
+import swaggerUi from "swagger-ui-express";
+import swaggerSpec from "./docs/swaggerSpec.js";
 
 const PORT = process.env.PORT || 3000;
 
@@ -21,6 +23,9 @@ app.use(express.urlencoded({ extended: true }));
 app.use("/api/users", userRouter);
 app.use("/api/auth", authRouter);
 app.use("/api/transactions", transactionRouter);
+
+//SWAGGER
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 mongoose
   .connect(process.env.MONGO_DB_URI as string)

@@ -12,7 +12,7 @@ export async function handleCreateTransaction(req: Request, res: Response) {
     });
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: "Internal Server Error" });
+    res.status(500).json({ error: true, message : "Internal Server Error" });
   }
 }
 
@@ -24,7 +24,7 @@ export async function handleGetTransactions(req: Request, res: Response) {
     res.status(200).json(transactions);
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: "Internal Server Error" });
+    res.status(500).json({ error: true, message : "Internal Server Error" });
   }
 }
 
@@ -34,6 +34,6 @@ export async function getTransactionsById(req: Request, res: Response) {
     res.status(200).json(transaction);
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: "Internal Server Error" });
+    res.status(500).json({error: true, message : "Internal Server Error" });
   }
 }

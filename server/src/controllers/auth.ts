@@ -18,7 +18,7 @@ async function handleUserLogin(req : Request, res : Response) {
     );
 
     if (!row) {
-      return res.status(400).json({ error: true, message: "User not found" });
+      return res.status(404).json({ error: true, message: "User not found" });
     }
 
     const isPasswordValid = await bcrypt.compare(password, row.password);
@@ -26,7 +26,7 @@ async function handleUserLogin(req : Request, res : Response) {
 
     if (!isPasswordValid) {
       return res
-        .status(400)
+        .status(401)
         .json({ error: true, message: "Invalid credentials" });
     }
 
