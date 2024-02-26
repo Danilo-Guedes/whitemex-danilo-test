@@ -8,7 +8,7 @@ const router = express.Router();
  * /api/users/login:
  *   post:
  *     tags:
- *      - Users
+ *      - Auth
  *     summary: User login
  *     description: Login a user with email and password
  *     requestBody:

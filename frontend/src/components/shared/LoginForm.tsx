@@ -42,7 +42,7 @@ function LoginForm() {
       const firstName = data.user.name.split(" ")[0];
       toast({
         title: "Usuário Logado",
-        description: `Bem vindo ao teste da TokenLab, ${firstName}`,
+        description: `Bem vindo ao teste da WhiteMex, ${firstName}`,
       });
 
       navigate(ROUTES.dashboard);

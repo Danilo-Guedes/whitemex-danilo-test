@@ -6,19 +6,19 @@ services:
       dockerfile: Dockerfile.database
     ports:
       - "27017:27017"
-  # server:
-  #   build: 
-  #     context: ./server
-  #     dockerfile: Dockerfile.nodejs
-  #   ports:
-  #     - "3000:3000"
-  #   depends_on:
-  #     - database
-  # frontend:
-  #   build: 
-  #     context: ./client
-  #     dockerfile: Dockerfile.frontend
-  #   ports:
-  #     - "5173:5173"
-  #   depends_on:
-  #     - server
+  server:
+    build: 
+      context: ./server
+      dockerfile: Dockerfile.nodejs
+    ports:
+      - "3000:3000"
+    depends_on:
+      - database
+  frontend:
+    build: 
+      context: ./frontend
+      dockerfile: Dockerfile.frontend
+    ports:
+      - "5173:5173"
+    depends_on:
+      - server

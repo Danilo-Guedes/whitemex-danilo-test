@@ -10,6 +10,7 @@ import { LogOutIcon } from "lucide-react";
 import { logout } from "@/utils/auth";
 
 import { User } from "@/types/user";
+import { useQueryClient } from "@tanstack/react-query";
 
 const validationSchema = Yup.object({
   name: Yup.string().required("Nome é obrigatório"),
@@ -24,6 +25,7 @@ type ProfileFormProps = {
 function ProfileForm({ user }: ProfileFormProps) {
   const { toast } = useToast();
   const navigate = useNavigate();
+  const queryClient = useQueryClient();
 
   const formik = useFormik({
     initialValues: {
@@ -38,6 +40,7 @@ function ProfileForm({ user }: ProfileFormProps) {
 
   const handleLogout = () => {
     logout();
+    queryClient.clear();
     toast({
       title: "Até Mais",
       description: `Você foi desconectado com sucesso!`,

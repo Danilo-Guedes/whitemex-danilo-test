@@ -11,6 +11,80 @@ import authMiddleware from "../middlewares/auth.js";
 
 const router = express.Router();
 
+/**
+ *@swagger
+ * api/transactions/create:
+ *  post:
+ *    tags:
+ *     - Transactions
+ *    summary: Create a transaction
+ *    description: Create a transaction
+ *    requestBody:
+ *      required: true
+ *      content:
+ *        application/json:
+ *          schema:
+ *            type: object
+ *            properties:
+ *              name:
+ *                type: string
+ *              number_card:
+ *                type: string
+ *              date_expiration:
+ *                type: string
+ *              cvv:
+ *                type: string
+ *              value:
+ *                type: number
+ *                example: 100.50
+ *    responses:
+ *      201:
+ *        description: Transaction created successfully
+ *        content:
+ *          application/json:
+ *            schema:
+ *              type: object
+ *              properties:
+ *                error:
+ *                  type: boolean
+ *                  example: false
+ *                created:
+ *                  type: boolean
+ *                  example: true
+ *      400:
+ *        description: Missing required fields
+ *        content:
+ *          application/json:
+ *            schema:
+ *              type: object
+ *              properties:
+ *                errors:
+ *                 type: array
+ *                 items:
+ *                   type: object
+ *                   properties:
+ *                     location:
+ *                       type: string
+ *                     msg:
+ *                       type: string
+ *                     path:
+ *                       type: string
+ *                     type:
+ *                       type: string
+ *      500:
+ *        description: Internal Server Error
+ *        content:
+ *          application/json:
+ *            schema:
+ *              type: object
+ *              properties:
+ *                error:
+ *                  type: boolean
+ *                  example: false
+ *                message:
+ *                  type: string
+ *                  example: Internal Server Error
+ */
 router.post(
   "/create",
   [
